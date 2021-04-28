@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MediaPlayer.js</title>
+</head>
+<body>
+	<header>
+		<h1>MediaPlayer.js</h1>
+		<p>An extensible media player.</p>
+	</header>
+	<main class="container">
+		<video class="movie">
+			<source src='assets/BigBuckBunny.mp4'>
+		</video>
+		<button>Play/Pause</ button>
+	</main>
+
+	<script>
+		const video = document.querySelector('video');
+		const button = document.querySelector('button');
+
+		//Todos los elementos de DOm tienen un API propiedades, eventos, metodos
+		// A los navegadores no les gusta el video automatico
+		// es un UX muy pobre
+		// Ese play tiene que ocurrir como resultado de interaccion de un usuario
+		// En JS no existen clases lo que si existen son objetos y podemos instanciarlos
+		//  Cuando estamos trabajando con clases debemos añadir esos metodos al prototype
+		
+		function MediaPlayer(config) {
+			this.media = config.el
+
+		}
+
+		MediaPlayer.prototype.play =  function() {
+			this.media.play();
+
+		}
+
+		const player =  new MediaPlayer({el: video });
+
+		button.onclick = () => player.play();
+
+	</script>
+</body>
+</html>
